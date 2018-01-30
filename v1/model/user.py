@@ -9,7 +9,10 @@ class user(object):
 		self.phone_number = phone_number
 		self.location = location
 		self.activated = activated
-		self.id = self.randomDigits(512)
+		self.id = Id
+		if Id != None:
+			self.id = self.randomDigits(512)
+
 
 	def get_name(self):
 		return self.username
