@@ -10,7 +10,7 @@ class user(object):
 		self.location = location
 		self.activated = activated
 		self.id = Id
-		if Id != None:
+		if Id == None:
 			self.id = self.randomDigits(512)
 
 
