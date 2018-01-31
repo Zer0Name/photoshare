@@ -16,13 +16,16 @@ class table(object):
 		"""query a table, return info or return None """
 		return
 	@abc.abstractmethod
-	def delete(self,input):
+	def delete(self,key):
 		"""delete data in a table, return true if you were able to and false if not"""
 		return
-		
+	@abc.abstractmethod
+	def get(self,key):
+		'''gets an item from a table or returns None if key doesnt exist'''
+		return 
 	@abc.abstractmethod
 	def scan(self,input):
-		"""return entire data base or returns None id error happned"""
+		"""return entire table or returns None on error"""
 		return
 
 
