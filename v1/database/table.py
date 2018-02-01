@@ -8,7 +8,7 @@ class table(object):
 		"""Insert data into a table, return true if you were able to and false if not"""
 		return
 	@abc.abstractmethod
-	def update(self,input,expected =None):
+	def update(self,key,data,predata):
 		"""update data in a table, return true if you were able to and false if not"""
 		return 
 	@abc.abstractmethod
@@ -16,18 +16,12 @@ class table(object):
 		"""query a table, return info or return None """
 		return
 	@abc.abstractmethod
-	def delete(self,key):
+	def delete(self,data):
 		"""delete data in a table, return true if you were able to and false if not"""
 		return
 	@abc.abstractmethod
-	def get(self,key):
+	def get(self,data):
 		'''gets an item from a table or returns None if key doesnt exist'''
 		return 
-	@abc.abstractmethod
-	def scan(self,input):
-		"""return entire table or returns None on error"""
-		return
-
-
 
 

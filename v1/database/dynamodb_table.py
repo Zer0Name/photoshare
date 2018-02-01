@@ -3,13 +3,13 @@ import abc
 import boto3
 from boto3.dynamodb.conditions import Key
 
+
 class dynamodb_table(table.table):
 	def __init__(self,table_name,primary_key):
 		self.primary_key = primary_key
 		self.table_name = table_name
 		self.dynamodb = boto3.resource('dynamodb')
-		self.table = dynamodb.Table(self.table_name)
-
+		self.table = self.dynamodb.Table(self.table_name)
 
 	
 	def insert(self, data):
@@ -33,11 +33,26 @@ class dynamodb_table(table.table):
 			response = self.table.delete_item(Key = key)
 			return True
 		except:
-			return False
+			return Falseo
 
-	def update(self,input,expected =None):
+	def update(self,key,data,expected):
+		#key = key of the table
+		# data = {"attribute": "processing_status", "value": "completed"}
+		#excepted = {"attribute": "processing_status", "value": "completed"}
 		"""update data in a table, return true if you were able to and false if not"""
-		return 
+		try:
+			update_expr = 'SET {} = :val1'.format(data['attribute'])
+			response =self.table.update_item(
+			Key=key,
+			UpdateExpression=update_expr,
+			ConditionExpression=expected["attribute"]+" = :num",
+			ExpressionAttributeValues={
+				':val1': data['value'],
+				':num': expected["value"]
+			})
+			return True
+		except:
+			return False
 
 	def query(self,col,info):
 		"""query a table, return info or return None """
