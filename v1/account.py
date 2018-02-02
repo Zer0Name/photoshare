@@ -147,7 +147,7 @@ def activate_account():
 	if not user_table.update(key,new_data,old_data):
 		return ERROR(-1, "Error updating database")
 
-	return jsonify(	{"Success" : True , "Description" : "Account activated and phone number confirmed"})
+	return jsonify(	{"Success" : True , "Description" : "Account activated and phone number confirmed","Id":current_user.get_id()})
 
 
 
@@ -165,6 +165,31 @@ def login():
 
 	if content.get('Email') == None or content.get('Password') == None:
 		return ERROR(-1,"Dont have correct argument present")
+	#connect to table 
+	user_table = usr_table.Users_table("users","Email")
+
+	#create key and get user
+	key = {}
+	key["Email"] = str(content["Email"])
+	response = user_table.get(key)
+	if response == None:
+		return  ERROR(-1,"Error with info")
+
+
+	#create user object with current user info 
+	current_user = user.user(str(response["Username"]),str(response["Password"]),str(response["Email"].lower()),
+							 str(response["Phone_number"]),str(response["Activated"]), 
+							 str(response["Id"] ))
+
+	#check if account is activated already
+	if current_user.get_activated() != "True":
+		return ERROR(1,"Error, account not acctivated yet")
+
+	if content["Password"] != current_user.get_password():
+		return ERROR(2,"Error, Error with info")
+
+	return jsonify(	{"Success" : True , "Description" : "Account logged in","Id":current_user.get_id()})
+
 
 
 
