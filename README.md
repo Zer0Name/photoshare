@@ -33,13 +33,52 @@ Receive data:
 Receive data: 
 {
 	"Success" : false (boolean),
-	"Status code" : -1,1,2 (int),
+	"Status code" : -1,1,(int),
 	"Description" : "Info about request"
 }
 ```
 
+**URL: https://site-name/v1/send-access-code**
+- Description: Send a verification number to a phone number.Some failures can occur if email sent is not in database, or database was updated while trying to add the verification number to the account. Lastly, an error will occur if the account is already activated. This API call should only be called before an account is activated 
+```
+Send data: 
+{	
+	"Phone_number" : "String",
+	"Email" : "String"
+}
+Receive data: 
+{
+	"Success" : true (boolean),
+	"Description" : "Info about request"
+}
+Receive data: 
+{
+	"Success" : false (boolean),
+	"Status code" : -1,(int),
+	"Description" : "Info about request"
+}
+```
 
+**URL: https://site-name/v1/activate-account**
+- Description:
+```
+Send data: 
+{	
+	"Phone_number" : "String",
+	"Email" : "String",
+	"Access_code" : "String"
+}
+```
 
+**URL: https://site-name/v1/login**
+- Description: Added phone number to account. The call takes the user email address
+```
+Send data: 
+{	
+	"Password" : "String",
+	"Email" : "String"
+}
+```
 
 
 
