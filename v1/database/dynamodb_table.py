@@ -54,12 +54,12 @@ class dynamodb_table(table.table):
 		except:
 			return False 
 
-	def query(self,col,info):
+	def query(self,data):
 		"""query a table, return info or return None """
 		response = self.table.query(
-			KeyConditionExpression=Key(col).eq(info)
+			KeyConditionExpression=Key(self.primary_key).eq(data)
 			)
 		if len(response) == 0:
 			return None
-		return response
+		return response['Items']
 

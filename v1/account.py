@@ -180,14 +180,15 @@ def login():
 	current_user = user.user(str(response["Username"]),str(response["Password"]),str(response["Email"].lower()),
 							 str(response["Phone_number"]),str(response["Activated"]), 
 							 str(response["Id"] ))
+	
+	#check if password is correct
+	if content["Password"] != current_user.get_password():
+		return ERROR(2,"Error, Error with info")
 
 	#check if account is activated already
 	if current_user.get_activated() != "True":
 		return ERROR(1,"Error, account not acctivated yet")
-
-	if content["Password"] != current_user.get_password():
-		return ERROR(2,"Error, Error with info")
-
+		
 	return jsonify(	{"Success" : True , "Description" : "Account logged in","Id":current_user.get_id()})
 
 
