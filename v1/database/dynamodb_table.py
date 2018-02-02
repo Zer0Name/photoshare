@@ -33,7 +33,7 @@ class dynamodb_table(table.table):
 			response = self.table.delete_item(Key = key)
 			return True
 		except:
-			return Falseo
+			return False
 
 	def update(self,key,data,expected):
 		#key = key of the table
@@ -52,7 +52,7 @@ class dynamodb_table(table.table):
 			})
 			return True
 		except:
-			return False
+			return False 
 
 	def query(self,col,info):
 		"""query a table, return info or return None """
