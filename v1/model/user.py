@@ -36,27 +36,27 @@ class user(object):
 
 	def set_name(self, username):
 		if self.old_info == None:
-			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Location,self.Activated,self.Id)
+			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Activated,self.Id)
 		self.Username = str(username)
 
 	def set_password(self, password):
 		if self.old_info == None:
-			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Location,self.Activated,self.Id)
+			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Activated,self.Id)
 		self.Password = str(password)
 
 	def set_email(self, email):
 		if self.old_info == None:
-			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Location,self.Activated,self.Id)
+			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Activated,self.Id)
 		self.Email = str(email)
 
 	def set_phone_number(self, phone_number):
 		if self.old_info == None:
-			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Location,self.Activated,self.Id)
+			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Activated,self.Id)
 		self.Phone_number = str(phone_number)
 
 	def set_activated(self, activated):
 		if self.old_info == None:
-			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Location,self.Activated,self.Id)
+			self.old_info = user(self.Username,self.Password,self.Email,self.Phone_number,self.Activated,self.Id)
 		self.Activated = str(activated)
 
 	def get_key(self):
