@@ -189,7 +189,8 @@ def login():
 	if current_user.get_activated() != "True":
 		return ERROR(1,"Error, account not acctivated yet")
 		
-	return jsonify(	{"Success" : True , "Description" : "Account logged in","Id":current_user.get_id()})
+	return jsonify(	{"Success" : True , "Description" : "Account logged in","Id":current_user.get_id(), 
+		"Username": current_user.get_get_username()})
 
 
 
